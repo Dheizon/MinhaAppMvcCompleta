@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace DevIO.App.Controllers
 {
 
-    //[Authorize]
+    [Authorize]
     public class FornecedoresController : BaseController
     {
         private readonly IFornecedorRepository _fornecedorRepository;

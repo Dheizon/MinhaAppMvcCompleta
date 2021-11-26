@@ -17,12 +17,14 @@ namespace DevIO.App.Configurations
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
             services.AddScoped<IFornecedorRepository, FornecedorRepository>();
             services.AddScoped<IEnderecoRepository, EnderecoRepository>();
+            services.AddScoped<IEnderecoTesteRepository, EnderecoTesteRepository>();
 
             services.AddSingleton<IValidationAttributeAdapterProvider, MoedaValidationAttributeAdapterProvider>();
 
             services.AddScoped<INotificador, Notificador>();
             services.AddScoped<IFornecedorService, FornecedorService>();
             services.AddScoped<IProdutoService, ProdutoService>();
+            services.AddScoped<IEnderecoTesteService, EnderecoTesteService>();
 
             return services;
         }

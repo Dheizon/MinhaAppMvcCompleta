@@ -41,36 +41,52 @@
 }
 
 function BuscaCep() {
+    let cepAnterior = "";
     $(document).ready(function () {
         function limpa_formulario_cep() {
-            $("#Endereco_Logradouro").val("");
-            $("#Endereco_Bairro").val("");
-            $("#Endereco_Cidade").val("");
-            $("#Endereco_Estado").val("");
+            $(".cep").val("");
+            $(".logradouro").val("");
+            $(".bairro").val("");
+            $(".cidade").val("");
+            $(".uf").val("");
+            $(".ibge").val("");
+            $(".siafi").val("");
         }
 
-        $("#Endereco_Cep").blur(function () {
+        $(".cep").focus(function () {
+            cepAnterior = $(this).val().replace(/\D/g, '');
+        });
+
+        $(".cep").blur(function () {
             var cep = $(this).val().replace(/\D/g, '');
+
+            if (cep === cepAnterior) {
+                return;
+            }
 
             if (cep !== "") {
                 var validacep = /^[0-9]{8}$/;
 
                 if (validacep.test(cep)) {
-                    $("#Endereco_Logradouro").val("...");
-                    $("#Endereco_Bairro").val("...");
-                    $("#Endereco_Cidade").val("...");
-                    $("#Endereco_Estado").val("...");
+                    $(".logradouro").val("...");
+                    $(".bairro").val("...");
+                    $(".cidade").val("...");
+                    $(".uf").val("...");
 
                     $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?",
                         function (dados) {
+                            console.log(dados);
                             if (!("erro" in dados)) {
-                                $("#Endereco_Logradouro").val(dados.logradouro);
-                                $("#Endereco_Bairro").val(dados.bairro);
-                                $("#Endereco_Cidade").val(dados.localidade);
-                                $("#Endereco_Estado").val(dados.uf);
+                                $(".logradouro").val(dados.logradouro);
+                                $(".bairro").val(dados.bairro);
+                                $(".cidade").val(dados.localidade);
+                                $(".uf").val(dados.uf);
+                                $(".ibge").val(dados.ibge);
+                                $(".siafi").val(dados.siafi);
                             } else {
                                 limpa_formulario_cep();
                                 alert("CEP não encontrado");
+                                $(".cep").focus();
                             }
                         });
                 } else {
@@ -86,5 +102,5 @@ function BuscaCep() {
 }
 
 $(document).ready(function () {
-    $("msg_box").fadeOut(2500);
+    $("#msg_box").fadeOut(2500);
 })

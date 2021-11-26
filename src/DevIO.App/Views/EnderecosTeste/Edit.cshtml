@@ -1,0 +1,57 @@
+﻿@model DevIO.App.ViewModels.EnderecoTesteViewModel
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+            <vc:summary></vc:summary>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="CEP" class="control-label"></label>
+                <input asp-for="CEP" class="form-control cep" readonly />
+                <span asp-validation-for="CEP" class="text-danger"></span>
+            </div>
+            <div class="form-row form-group">
+                <div class="col col-6">
+                    <label asp-for="Logradouro" class="control-label"></label>
+                    <input asp-for="Logradouro" class="form-control logradouro" autofocus />
+                    <span asp-validation-for="Logradouro" class="text-danger"></span>
+                </div>
+                <div class="col col-6">
+                    <label asp-for="Cidade" class="control-label"></label>
+                    <input asp-for="Cidade" class="form-control cidade" />
+                    <span asp-validation-for="Cidade" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <div class="col col-6">
+                    <label asp-for="Bairro" class="control-label"></label>
+                    <input asp-for="Bairro" class="form-control bairro" />
+                    <span asp-validation-for="Bairro" class="text-danger"></span>
+                </div>
+                <div class="col col-2">
+                    <label asp-for="UF" class="control-label"></label>
+                    <input asp-for="UF" class="form-control uf" />
+                    <span asp-validation-for="UF" class="text-danger"></span>
+                </div>
+            </div>
+            <input type="hidden" asp-for="IBGE" />
+            <input type="hidden" asp-for="SIAFI" />
+            <div class="form-group text-right">
+                <input type="submit" value="Atualizar" class="btn btn-primary" />
+                <a class="btn btn-info" asp-action="Index">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

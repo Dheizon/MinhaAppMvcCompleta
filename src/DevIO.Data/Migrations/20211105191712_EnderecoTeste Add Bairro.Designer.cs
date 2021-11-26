@@ -4,14 +4,16 @@ using DevIO.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DevIO.Data.Migrations
 {
     [DbContext(typeof(MeuDbContext))]
-    partial class MeuDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211105191712_EnderecoTeste Add Bairro")]
+    partial class EnderecoTesteAddBairro
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -144,17 +146,9 @@ namespace DevIO.Data.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
-                    b.Property<string>("IBGE")
-                        .IsRequired()
-                        .HasColumnType("varchar(16)");
-
                     b.Property<string>("Logradouro")
                         .IsRequired()
                         .HasColumnType("varchar(200)");
-
-                    b.Property<string>("SIAFI")
-                        .IsRequired()
-                        .HasColumnType("varchar(16)");
 
                     b.Property<string>("UF")
                         .IsRequired()

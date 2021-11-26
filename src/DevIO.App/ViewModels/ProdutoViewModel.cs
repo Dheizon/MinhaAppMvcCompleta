@@ -26,7 +26,7 @@ namespace DevIO.App.ViewModels
         public string Descricao { get; set; }
         public string Imagem { get; set; }
         
-        [DisplayName("Imagem do Produto")]
+        [DisplayName("Imagem do Produto")]        
         public IFormFile ImagemUpload { get; set; }
 
         [Moeda]
@@ -36,9 +36,10 @@ namespace DevIO.App.ViewModels
         public DateTime DataCadastro { get; set; }
         
         [DisplayName("Ativo?")]
-        public bool Ativo { get; set; }      
-        
+        public bool Ativo { get; set; }
+
         public FornecedorViewModel Fornecedor { get; set; }
+        
         public IEnumerable<FornecedorViewModel> Fornecedores { get; set; }
     }
 }

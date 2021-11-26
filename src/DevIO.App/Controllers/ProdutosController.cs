@@ -106,7 +106,7 @@ namespace DevIO.App.Controllers
             return true;
         }
 
-        [ClaimsAuthorize("Produtos", "Editar")]
+        //[ClaimsAuthorize("Produtos", "Editar")]
         [Route("editar-produto/{id:guid}")]
         public async Task<IActionResult> Edit(Guid id)
         {
@@ -120,7 +120,7 @@ namespace DevIO.App.Controllers
             return View(produtoViewModel);
         }
 
-        [ClaimsAuthorize("Produtos", "Editar")]
+        //[ClaimsAuthorize("Produtos", "Editar")]
         [Route("editar-produto/{id:guid}")]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -162,7 +162,7 @@ namespace DevIO.App.Controllers
             return RedirectToAction("Index");
         }
 
-        [ClaimsAuthorize("Produtos", "Excluir")]
+        //[ClaimsAuthorize("Produtos", "Excluir")]
         [Route("excluir-produto/{id:guid}")]
         public async Task<IActionResult> Delete(Guid id)
         {
@@ -176,7 +176,7 @@ namespace DevIO.App.Controllers
             return View(produto);
         }
 
-        [ClaimsAuthorize("Produtos", "Excluir")]
+        //[ClaimsAuthorize("Produtos", "Excluir")]
         [Route("excluir-produto/{id:guid}")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

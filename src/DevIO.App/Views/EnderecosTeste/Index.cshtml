@@ -1,0 +1,64 @@
+﻿@using DevIO.App.Extensions
+@model IEnumerable<DevIO.App.ViewModels.EnderecoTesteViewModel>
+
+@{
+    ViewData["Title"] = "Endereços";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<vc:summary></vc:summary>
+<p class="text-right mt-n5">
+    <a class="btn btn-primary px-5" asp-action="Create">Novo</a>
+</p>
+<hr class="my-3" />
+<table class="table table-sm table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CEP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Logradouro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bairro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UF)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.CEP)*@
+                    @this.FormataCep(item.CEP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Logradouro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bairro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UF)
+                </td>
+                <td class="text-right">
+                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

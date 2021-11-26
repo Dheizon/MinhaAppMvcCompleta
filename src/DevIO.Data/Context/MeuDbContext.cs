@@ -1,6 +1,8 @@
 ﻿using AppMvcBasica.Models;
+using DevIO.Business.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+
 
 namespace DevIO.Data.Context
 {
@@ -14,6 +16,7 @@ namespace DevIO.Data.Context
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<Fornecedor> Fornecedores { get; set; }
+        public DbSet<EnderecoTeste> EnderecosTeste { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
